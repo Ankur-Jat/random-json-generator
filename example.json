@@ -1,0 +1,56 @@
+[{
+    "customer_id": 7,
+    "payment_methods": {
+      "mode": "WALLET",
+      "bank": "ICICI",
+      "network": "VISA",
+      "bin_6_number": 123456,
+      "bin_8_number": 2345678,
+      "card_index": "7_1",
+      "vpa": null,
+      "amount": 112900
+    },
+    "status": 1,
+    "items": [
+      {
+        "item_id": 1,
+        "category_id": 43235,
+        "product_id": 3,
+        "brand_id": 2,
+        "categories_level": {
+          "category_L1": 55521,
+          "category_L2": 55521,
+          "category_L3": 55547,
+          "category_L4": 55504,
+          "category_L5": 55534
+        },
+        "merchant_id": 0,
+        "vertical_id": 6,
+        "item_status": 1,
+        "price": 77603,
+        "promocode": "DEF",
+        "campaign": "CAMP114"
+      },
+      {
+        "item_id": 2,
+        "category_id": 43235,
+        "product_id": 0,
+        "brand_id": 10,
+        "categories_level": {
+          "category_L1": 55527,
+          "category_L2": 55525,
+          "category_L3": 55512,
+          "category_L4": 55503,
+          "category_L5": 55528
+        },
+        "merchant_id": 9,
+        "vertical_id": 4,
+        "item_status": 1,
+        "price": 43749,
+        "promocode": "XYZ",
+        "campaign": "CAMP114"
+      }
+    ],
+    "created_at" : "2019-04-12T15:08:37.000Z",
+    "updated_at": "2019-04-12T16:08:37.000Z"
+  }]

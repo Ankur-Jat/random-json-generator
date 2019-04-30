@@ -1,0 +1,224 @@
+{
+    "_schema": {
+        "datatype": "object"
+    },
+    "_ref": {
+        "object_main": {
+            "datatype": "object",
+            "data": {
+                "user_id": {
+                    "datatype": "int",
+                    "min": 1,
+                    "max": 500000
+                },
+                "payment_methods": {
+                    "datatype": "object",
+                    "reference": "object_payment_methods"
+                },
+                "items": {
+                    "datatype": "array",
+                    "min": 1,
+                    "max": 50,
+                    "item_datatype": "object",
+                    "item_data_helper": {
+                        "reference": "object_items"
+                    }
+                },
+                "created_at": {
+                    "datatype": "datetime",
+                    "format": "%Y-%m-%dT%H:%M:%S.000Z"
+                },
+                "updated_at": {
+                    "datatype": "datetime",
+                    "format": "%Y-%m-%dT%H:%M:%S.000Z"
+                }
+            }
+        },
+        "object_payment_methods": {
+            "datatype": "object",
+            "data": {
+                "mode": {
+                    "datatype": "string",
+                    "choice": [
+                        "WALLET",
+                        "CREDIT CARD",
+                        "DEBIT CARD",
+                        "NET BANKING"
+                    ]
+                },
+                "bank": {
+                        "datatype": "string",
+                        "choice": [
+                            "KOTAK",
+                            "HDFC",
+                            "STANDARD CHARTED BANK",
+                            "SBI",
+                            "PNB",
+                            "SYNDICATE",
+                            "ICICI",
+                            "YES BANK",
+                            "DENA JI BANK",
+                            "HSBC",
+                            "CITI BANK"
+                        ]
+                },
+                "network": {
+                    "datatype": "string",
+                    "choice": [
+                        "VISA",
+                        "MASTERCARD",
+                        "RUPAY",
+                        "AMEX"
+                    ]
+                },
+                "bin_6_number": {
+                    "datatype": "int",
+                    "min": 100000,
+                    "max": 999999
+                },
+                "bin_8_number": {
+                    "datatype": "int",
+                    "min": 10000000,
+                    "max": 99999999
+                },
+                "card_index": {
+                    "datatype": "string",
+                    "prefix": {
+                        "datatype": "format",
+                        "ref": "{user_id}_",
+                        "choice": [
+                            "1",
+                            "2",
+                            "3"
+                        ]
+                    }
+                },
+                "vpa": {
+                    "datatype": "int",
+                    "fix": 0
+                },
+                "amount": {
+                    "datatype": "int",
+                    "min": 100,
+                    "max": 10000000
+                }
+            }
+        },
+        "object_items": {
+            "datatype": "object",
+            "data": {
+                "item_id": {
+                    "datatype": "int",
+                    "min": 1,
+                    "max": 1000000000
+                },
+                "category_id": {
+                    "datatype": "int",
+                    "min": 1,
+                    "max": 100000
+                },
+                "product_id": {
+                    "datatype": "int",
+                    "min": 1,
+                    "max": 1000000
+                },
+                "brand_id": {
+                    "datatype": "int",
+                    "min": 1,
+                    "max": 10000
+                },
+                "categories_level": {
+                    "datatype": "object",
+                    "reference": "object_categories_level"
+                },
+                "merchant_id": {
+                    "datatype": "int",
+                    "min": 1,
+                    "max": 10000000
+                },
+                "vertical_id": {
+                    "datatype": "int",
+                    "min": 1,
+                    "max": 1000
+                },
+                "item_status": {
+                    "datatype": "int",
+                    "choice": [
+                        1,
+                        2,
+                        3,
+                        4,
+                        5,
+                        6,
+                        7,
+                        8,
+                        9,
+                        10,
+                        11,
+                        12,
+                        13,
+                        14,
+                        15
+                    ]
+                },
+                "price": {
+                    "datatype": "int",
+                    "min": 1,
+                    "max": 1000000
+                },
+                "promocode": {
+                    "datatype": "string",
+                    "min": 4,
+                    "max": 18,
+                    "to_upper": true
+                },
+                "campaign": {
+                    "datatype": "string",
+                    "prefix": {
+                        "datatype": "format",
+                        "ref": "CAMP_",
+                        "range": {
+                            "min": 1,
+                            "max": 50
+                        }
+                    }
+                },
+                "total_gratification": {
+                    "datatype": "int",
+                    "min": 1,
+                    "max": 10
+                }
+            }
+        },
+        "object_categories_level": {
+            "datatype": "object",
+            "data": {
+                "category_L1": {
+                    "datatype": "int",
+                    "min": 1000,
+                    "max": 100000
+                },
+                "category_L2": {
+                    "datatype": "int",
+                    "min": 1000,
+                    "max": 100000
+                },
+                "category_L3": {
+                    "datatype": "int",
+                    "min": 1000,
+                    "max": 100000
+                },
+                "category_L4": {
+                    "datatype": "int",
+                    "min": 1000,
+                    "max": 100000
+                },
+                "category_L5": {
+                    "datatype": "int",
+                    "min": 1000,
+                    "max": 100000
+                }
+            }
+        }
+    }
+}
