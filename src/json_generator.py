@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/python3
 import copy
 import datetime
 import json
@@ -7,19 +7,17 @@ from pprint import pprint
 import random
 import string
 
+
 class JsonGenerator():
     # JsonGenerator class takes schema_file argument in it's constructer.
     # It exposes one public method that is use to build JSON data
-    def __init__(self, schema_file, file_folder_location, file_count=1,
-        objects_per_file=10, custome_methods=[]):
+    def __init__(self, schema_file, custome_methods=[]):
+        self.__generated_json_data = None
         with open(schema_file) as f:
             data = json.load(f)
             self.__schema = data["_schema"]
-            self.__schema["file_count"] = file_count
-            self.__schema["objects_per_file"] = objects_per_file
             self.__ref = data["_ref"]
             del data
-        self.file_folder_location = file_folder_location
         self.__custom_methods = custome_methods
         self.__validate_schema()
 
@@ -98,25 +96,12 @@ class JsonGenerator():
         else:
             return random.randint(data["min"], data["max"])
     
-    def generate_random_data(self):
-        total_objects_count = self.__schema["file_count"] * self.__schema["objects_per_file"]
-        print("Starting generating data for", total_objects_count, "objects")
-        file_count = 1
-        while file_count <= self.__schema["file_count"]:
-            generated_json_data = []
-            with open(self.file_folder_location + "file_" + str(file_count) + ".json", "w") as json_file:
-                objects_per_file = self.__schema["objects_per_file"]
-                while objects_per_file > 0:
-                    generated_json_data.append(
-                        self.__generate_main_object()
-                    )
-                    objects_per_file -= 1
-                json.dump(generated_json_data, json_file)
-            print("\nfile", file_count, "is generated\n")
-            file_count += 1
-        print("Generated", total_objects_count, "objects. Just for you!")
+    def get_json_data(self, regenerate=False):
+        if not self.__generated_json_data or regenerate:
+            self.__generated_json_data = self.__generate_main_object()
+        return self.__generated_json_data
 
 
 if __name__ == '__main__':
-    random_object = JsonGenerator()
-    random_object.generate_random_data()
+    random_object = JsonGenerator('./example-schema.json')
+    print(random_object.get_json_data())

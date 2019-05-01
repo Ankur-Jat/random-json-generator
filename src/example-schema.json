@@ -18,7 +18,7 @@
                 "items": {
                     "datatype": "array",
                     "min": 1,
-                    "max": 50,
+                    "max": 10,
                     "item_datatype": "object",
                     "item_data_helper": {
                         "reference": "object_items"
