@@ -11,6 +11,8 @@ import string
 class JsonGenerator():
     # JsonGenerator class takes schema_file argument in it's constructer.
     # It exposes one public method that is use to build JSON data
+    __auto_incr = 0
+    
     def __init__(self, schema_file, custome_methods=[]):
         self.__generated_json_data = None
         with open(schema_file) as f:
@@ -61,6 +63,10 @@ class JsonGenerator():
                     data["item_datatype"]))(self.__ref[data["item_data_helper"]])
             array.append(generated_data)
         return copy.deepcopy(array)
+    
+    def __generate_auto_increment(self, data):
+        self.__auto_incr += 1
+        return self.__auto_incr + data.get('start_index', 0)
     
     def __generate_datetime(self, data):
         datetime_value = datetime.datetime.now()

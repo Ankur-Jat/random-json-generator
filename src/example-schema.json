@@ -6,6 +6,10 @@
         "object_main": {
             "datatype": "object",
             "data": {
+                "order_id": {
+                    "datatype": "auto_increment",
+                    "start_index": 0
+                },
                 "user_id": {
                     "datatype": "int",
                     "min": 1,
